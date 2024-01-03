@@ -1,42 +1,42 @@
 # Jarvis-Assistant
 
-## You don't speak French ? Look for the English branch ! 
+## Don't speak French? Look for the English branch!
 
-### Présentation :
-Jarvis est un assistant vocal en python, créer a partir de mon ennuie nocturne et de ma dépression, il est utilisable sur Windows comme Linux, cependant vous devriez installer FFMPEG.
+### Introduction:
+Jarvis is a Python voice assistant, created out of my nocturnal boredom and depression. It can be used on both Windows and Linux, however, you should install FFMPEG.
 
-### Installation : 
+### Installation:
 
-**Requis :** 
+**Requirements:**
 
-``FFMPEG`` : https://ffmpeg.org/download.html
-(le fichier requis est "ffplay")
+`FFMPEG`: https://ffmpeg.org/download.html
+(The required file is "ffplay")
 
-``Python``: https://www.python.org/
+`Python`: https://www.python.org/
 
-``Pip3``: https://pypi.org/
+`Pip3`: https://pypi.org/
 
-**Etapes :**
+**Steps:**
 
-Ouvrir un terminal et entrer la commande : 
+Open a terminal and enter the command:
 
 ``` pip install -r requirements.txt  ```
 
-Après avoir installer FFMPEG et avoir extrait FFPLAY, votre dossier devrais ressembler à ça : 
+After installing FFMPEG and extracting FFPLAY, your folder should look like this:
 
 Jarvis-Assistant -  
 |- ffplay   
 |- Jarvis.py    
 |- README.md    
-|_ requirements.txt
+|- requirements.txt
 
-Vous pouvez maintenant executer la commande suivante : 
+You can now execute the following command:
 
 `` python Jarvis.py ``
 
-Si vous souhaitez créer un fichier bash afin de cliquer sur une icon et éviter d'ouvrir un terminal a chaque fois :
+If you want to create a bash file to click on an icon and avoid opening a terminal each time:
 
-- Créer un fichier bash (Windows : .bat / Linux : .sh)
+- Create a bash file (Windows: .bat / Linux: .sh)
 
 Windows : 
 ``` 
@@ -47,7 +47,7 @@ pause
 -------------
 Linux :
 
-- Avant, vous devriez éxecuter la commande ``chmod +x run_jarvis.sh``
+- Before, you should execute the command ``chmod +x run_jarvis.sh``
 
 ```
 #!/bin/bash
