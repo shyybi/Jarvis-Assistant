@@ -6,11 +6,11 @@ from youtubesearchpython import VideosSearch
 
 recognizer = sr.Recognizer()
 
-voiceLang = 'fr-FR' # For FRENCH : fr-FR, For English en-US
+voiceLang = 'en-US' # For FRENCH : fr-FR, For English en-US
 
 def voice_capture():
     with sr.Microphone() as source:
-        print("Écoute...")
+        print("Listening...")
         audio = recognizer.listen(source)
     return audio
 
@@ -21,15 +21,15 @@ def search_and_play_video(query):
     if results['result']:
 
         video_url = results['result'][0]['link']
-        response = "Lecture de la vidéo : " + results['result'][0]['title'] 
-        language = 'fr'
+        response = "Playing video : " + results['result'][0]['title'] 
+        language = 'en'
         myobj = gTTS(text=response, lang=language, slow=False)
         myobj.save("reponse.mp3")
         os.system("ffplay -nodisp -autoexit reponse.mp3")
         os.system(f"start {video_url}")
     else:
-        response = "Aucune vidéo trouvée pour la recherche."
-        language = 'fr'
+        response = "Video not found"
+        language = 'en'
         myobj = gTTS(text=response, lang=language, slow=False)
         myobj.save("reponse.mp3")
         os.system("ffplay -nodisp -autoexit reponse.mp3")
@@ -39,35 +39,35 @@ def search_and_play_video(query):
 def Jarvis(audio):
     try:
         output = recognizer.recognize_google(audio, language=voiceLang)
-        print("Vous avez dit: " + output)
+        print("You said: " + output)
 
         if output.startswith("Jarvis"):
-            if "vidéo" in output:
+            if "video" in output:
                 query = output[12:]
                 search_and_play_video(query)
-            elif "joue" in output:
+            elif "play" in output:
                 query = output[15:]
                 search_and_play_video(query)
-            if "heure" in output:
+            if "time" in output:
                 now = datetime.datetime.now()
                 current_time = now.strftime("%H:%M")
-                response = "Il est " + current_time
-                language = 'fr'
+                response = "It's" + current_time
+                language = 'en'
                 myobj = gTTS(text=response, lang=language, slow=False)
                 myobj.save("reponse.mp3")
                 os.system("ffplay -nodisp -autoexit reponse.mp3")
 
-            if "lance" in output:
-                response = f"Démarrage du service : {output[13:]}"
-                language = 'fr'
+            if "start" in output:
+                response = f"Starting service : {output[13:]}"
+                language = 'en'
                 myobj = gTTS(text=response, lang=language, slow=False)
                 myobj.save("reponse.mp3")
                 os.system("ffplay -nodisp -autoexit reponse.mp3")
                 os.system(f"start {output[13:]}")
 
-            if "arrête" in output:
-                response = f"Arrêt du service : {output[14:]}"
-                language = 'fr'
+            if "stop" in output:
+                response = f"Stopping service : {output[14:]}"
+                language = 'en'
                 myobj = gTTS(text=response, lang=language, slow=False)
                 myobj.save("reponse.mp3")
                 os.system("ffplay -nodisp -autoexit reponse.mp3")
@@ -76,10 +76,10 @@ def Jarvis(audio):
 
     except sr.UnknownValueError:
         text = ""
-        print("Désolé, je n'ai pas compris.")
+        print("Sorry, I don't understand what you said.")
     except sr.RequestError as e:
         text = ""
-        print("Erreur; {0}".format(e))     
+        print("Error; {0}".format(e))     
 
 def main():
     while True:
