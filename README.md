@@ -1,6 +1,6 @@
 # Jarvis-Assistant
 
-## Don't speak French? Look for the English branch!
+## Tu ne parle pas Anglais ? Regarde la branch en Français (main) !
 
 ### Introduction:
 Jarvis is a Python voice assistant, created out of my nocturnal boredom and depression. It can be used on both Windows and Linux, however, you should install FFMPEG.
