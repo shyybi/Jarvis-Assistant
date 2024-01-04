@@ -28,7 +28,7 @@ Jarvis-Assistant -
 |- ffplay   
 |- Jarvis.py    
 |- README.md    
-|- requirements.txt
+|_ requirements.txt
 
 You can now execute the following command:
 
