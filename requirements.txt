@@ -1,0 +1,3 @@
+SpeechRecognition
+gTTS
+youtube-search-python
