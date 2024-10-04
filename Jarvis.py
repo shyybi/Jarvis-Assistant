@@ -11,7 +11,8 @@ voiceLang = 'fr-FR' # For FRENCH : fr-FR, For English en-US
 def voice_capture():
     with sr.Microphone() as source:
         print("Écoute...")
-        audio = recognizer.listen(source)
+        audio = recognizer.listen(source, timeout=5, phrase_time_limit=5)
+        recognizer.adjust_for_ambient_noise(source)
     return audio
 
 
@@ -40,7 +41,7 @@ def Jarvis(audio):
     try:
         output = recognizer.recognize_google(audio, language=voiceLang)
         print("Vous avez dit: " + output)
-
+        
         if output.startswith("Jarvis"):
             if "vidéo" in output:
                 query = output[12:]
@@ -68,22 +69,36 @@ def Jarvis(audio):
                 myobj = gTTS(text=response, lang=language, slow=False)
                 myobj.save("reponse.mp3")
                 os.system("ffplay -nodisp -autoexit reponse.mp3")
-                os.system(f"start {output[13:]} && exit")
+                os.system(f"start {output[13:]}")
                 os.system("exit")
+            
+  
+            
             if "arrête" in output:
                 response = f"Arrêt du service : {output[14:]}"
                 language = 'fr'
                 myobj = gTTS(text=response, lang=language, slow=False)
                 myobj.save("reponse.mp3")
                 os.system("ffplay -nodisp -autoexit reponse.mp3")
-                os.system(f"taskkill /f /im {output[14:]}")
+                os.system(f"taskkill /f /im {output[14:]}.exe")
 
-            if "suicider" in output:
-                response = f"Bah nique ta mere poto"
+
+            if "arrête la musique" in output:
+                response = f"Arrêt de la musique"
                 language = 'fr'
                 myobj = gTTS(text=response, lang=language, slow=False)
                 myobj.save("reponse.mp3")
                 os.system("ffplay -nodisp -autoexit reponse.mp3")
+                os.system(f"taskkill /f /im firefox.exe")
+
+
+            if "suicider" in output:
+                response = f"Bah arrete"
+                language = 'fr'
+                myobj = gTTS(text=response, lang=language, slow=False)
+                myobj.save("reponse.mp3")
+                os.system("ffplay -nodisp -autoexit reponse.mp3")
+                
             if "comment tu vas" in output:
                 response = f"Tranquille ecoute le sang"
                 language = 'fr'
